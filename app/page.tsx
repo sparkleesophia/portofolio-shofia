@@ -336,7 +336,7 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="#"
+                href="https://lawlevisay.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex w-fit shrink-0 items-center gap-2.5 rounded-full border border-autumn-navy/20 bg-autumn-ivory px-5 py-3 text-sm font-semibold text-autumn-navy transition hover:border-autumn-rust hover:text-autumn-rust"

@@ -979,7 +979,7 @@ const projects = [
 ];
 
 export default function CaseStudySection() {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>("project-1");
   const [dataTab, setDataTab] = useState<"split" | "before" | "after">("split");
 
   const activeProject = projects.find((p) => p.id === selectedId) ?? null;
