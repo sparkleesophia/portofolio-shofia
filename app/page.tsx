@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import CaseStudySection from "./components/CaseStudySection";
 
 const services = [
@@ -161,21 +164,27 @@ export default function Home() {
               <span className="h-2 w-2 rounded-full bg-autumn-rust" />
               PEOPLE ANALYTICS · DATA OPERATIONS
             </p>
-            <h1
-              className="text-4xl font-semibold leading-[1.12] tracking-[-0.045em] sm:text-5xl lg:text-[3.6rem]"
-              id="hero-title"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              Transforming Messy Data into{" "}
-              <span className="text-autumn-rust">
-                Actionable People Insights
-              </span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-autumn-navy/70 sm:text-lg sm:leading-8">
-              I help businesses streamline their data operations, uncover
-              workforce trends, and automate repetitive tasks. By combining
-              behavioral psychology with robust data analytics, I build systems
-              that make your data work for you.
-            </p>
+              <h1
+                className="text-4xl font-semibold leading-[1.12] tracking-[-0.045em] sm:text-5xl lg:text-[3.6rem]"
+                id="hero-title"
+              >
+                Transforming Messy Data into{" "}
+                <span className="text-autumn-rust">
+                  Actionable People Insights
+                </span>
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-7 text-autumn-navy/70 sm:text-lg sm:leading-8">
+                I help businesses streamline their data operations, uncover
+                workforce trends, and automate repetitive tasks. By combining
+                behavioral psychology with robust data analytics, I build systems
+                that make your data work for you.
+              </p>
+            </motion.div>
             <a
               className="group mt-8 inline-flex items-center gap-3 rounded-full bg-autumn-rust px-6 py-3.5 text-sm font-semibold text-white shadow-[0_14px_30px_-10px_rgba(107,70,193,0.55)] transition hover:-translate-y-0.5 hover:bg-autumn-purple"
               href="#case-study"
@@ -195,7 +204,13 @@ export default function Home() {
           className="border-t border-autumn-rust/10 bg-white/75 py-20 sm:py-24"
           id="about"
         >
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:px-12"
+          >
             <div>
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-autumn-rust">
                 About Me
@@ -264,7 +279,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section
@@ -293,9 +308,13 @@ export default function Home() {
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               {services.map((service) => (
-                <article
+                <motion.article
                   key={service.number}
-                  className="flex min-h-[19rem] flex-col rounded-[1.5rem] border border-autumn-rust/10 bg-white/90 p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-autumn-rust/30 sm:p-7"
+                  whileHover={{
+                    y: -5,
+                    boxShadow: "0 10px 30px -10px rgba(26, 41, 66, 0.1)",
+                  }}
+                  className="flex min-h-[19rem] flex-col rounded-[1.5rem] border border-autumn-rust/10 bg-white/90 p-6 shadow-sm transition-colors hover:border-autumn-rust/30 sm:p-7"
                 >
                   <div className="flex items-center justify-between">
                     <span className="rounded-full bg-autumn-lilac px-2.5 py-1 text-xs font-semibold tracking-[0.15em] text-autumn-purple">
@@ -315,7 +334,7 @@ export default function Home() {
                   <p className="mt-6 border-t border-autumn-navy/10 pt-4 text-xs font-medium text-autumn-rust">
                     {service.detail}
                   </p>
-                </article>
+                </motion.article>
               ))}
             </div>
 
@@ -347,7 +366,128 @@ export default function Home() {
           </div>
         </section>
 
-        <CaseStudySection />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <CaseStudySection />
+        </motion.div>
+
+        <section
+          aria-labelledby="contact-title"
+          className="bg-autumn-cream py-20 sm:py-24"
+          id="contact"
+        >
+          <div className="mx-auto max-w-3xl px-6 sm:px-10 lg:px-12">
+            <div className="text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-autumn-rust">
+                Get in touch
+              </p>
+              <h2
+                className="text-3xl font-semibold tracking-[-0.035em] text-autumn-navy sm:text-4xl"
+                id="contact-title"
+              >
+                Let&apos;s Talk
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-autumn-navy/70 sm:text-base sm:leading-7">
+                Ready to transform your HR data or automate your workflow? Send
+                me a message.
+              </p>
+            </div>
+
+            <div className="mt-10 rounded-[2rem] border border-autumn-rust/15 bg-autumn-ivory p-6 shadow-sm sm:p-10">
+              <form
+                action="mailto:shofia.kh@gmail.com"
+                method="post"
+                encType="text/plain"
+                className="space-y-5"
+              >
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-xs font-semibold uppercase tracking-wider text-autumn-navy/80"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      name="Name"
+                      type="text"
+                      required
+                      placeholder="Your name"
+                      className="mt-2 w-full rounded-xl border border-autumn-navy/15 bg-white px-4 py-3 text-sm text-autumn-navy placeholder:text-autumn-navy/40 focus:border-autumn-rust focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-xs font-semibold uppercase tracking-wider text-autumn-navy/80"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="Email"
+                      type="email"
+                      required
+                      placeholder="you@company.com"
+                      className="mt-2 w-full rounded-xl border border-autumn-navy/15 bg-white px-4 py-3 text-sm text-autumn-navy placeholder:text-autumn-navy/40 focus:border-autumn-rust focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-service"
+                    className="block text-xs font-semibold uppercase tracking-wider text-autumn-navy/80"
+                  >
+                    Service Interest
+                  </label>
+                  <select
+                    id="contact-service"
+                    name="Service Interest"
+                    defaultValue="Data Cleaning"
+                    className="mt-2 w-full rounded-xl border border-autumn-navy/15 bg-white px-4 py-3 text-sm text-autumn-navy focus:border-autumn-rust focus:outline-none"
+                  >
+                    <option value="Data Cleaning">Data Cleaning</option>
+                    <option value="People Analytics">People Analytics</option>
+                    <option value="Workflow Automation">
+                      Workflow Automation
+                    </option>
+                    <option value="AI Integration">AI Integration</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-xs font-semibold uppercase tracking-wider text-autumn-navy/80"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="Message"
+                    rows={4}
+                    required
+                    placeholder="Tell me a little about your project, team, or workflow goals..."
+                    className="mt-2 w-full rounded-xl border border-autumn-navy/15 bg-white px-4 py-3 text-sm text-autumn-navy placeholder:text-autumn-navy/40 focus:border-autumn-rust focus:outline-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-autumn-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-autumn-rust sm:w-auto"
+                >
+                  Send Message <ArrowIcon />
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-autumn-navy/10">
